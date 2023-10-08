@@ -11,4 +11,4 @@ PRODUCT_NAME = ddns4cdn
 PRODUCT_BUNDLE_IDENTIFIER = best.jat.ddns4cdn
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 best.jat. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 Jat. All rights reserved.
