@@ -1,0 +1,6 @@
+{
+  "appTitle": "ddns4cdn",
+  "@appTitle": {
+    "description": "Automatically update the IP address of origin server for CDN."
+  }
+}

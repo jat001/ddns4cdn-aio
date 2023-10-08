@@ -1,2 +1,1 @@
-# ddns4cdn-aio
-Cross-platform application with built-in ddns4cdn and ddns4cdn-ui.
+# ddns4cdn-aio [![wakatime](https://wakatime.com/badge/github/jat001/ddns4cdn-aio.svg)](https://wakatime.com/@Jat/projects/wizbxbpacr)
