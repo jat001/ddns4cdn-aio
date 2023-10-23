@@ -1,14 +1,14 @@
 {
-  "version": "0.2.0",
   "configurations": [
     {
-      "name": "win",
-      "type": "dart",
-      "request": "launch",
-      "flutterMode": "debug",
+      "args": ["-d", "windows"],
       "cwd": "${workspaceFolder}/src",
+      "flutterMode": "debug",
+      "name": "win",
       "program": "lib/main.dart",
-      "args": ["-d", "windows"]
+      "request": "launch",
+      "type": "dart"
     }
-  ]
+  ],
+  "version": "0.2.0"
 }

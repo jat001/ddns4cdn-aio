@@ -1,0 +1,6 @@
+{
+  "cmake.sourceDirectory": [
+    "${workspaceFolder}/src/windows",
+    "${workspaceFolder}/src/linux"
+  ]
+}
