@@ -1,20 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:webf/webf.dart';
 
-import 'src/app.dart';
-import 'src/settings/settings_controller.dart';
-import 'src/settings/settings_service.dart';
+void main() {
+  runApp(const MyApp());
+}
 
-void main() async {
-  // Set up the SettingsController, which will glue user settings to multiple
-  // Flutter Widgets.
-  final settingsController = SettingsController(SettingsService());
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-  // Load the user's preferred theme while the splash screen is displayed.
-  // This prevents a sudden theme change when the app is first displayed.
-  await settingsController.loadSettings();
+  @override
+  Widget build(BuildContext context) {
+    final MediaQueryData queryData = MediaQuery.of(context);
+    final Size viewportSize = queryData.size;
 
-  // Run the app and pass in the SettingsController. The app listens to the
-  // SettingsController for changes, then passes it further down to the
-  // SettingsView.
-  runApp(MyApp(settingsController: settingsController));
+    return MaterialApp(
+        home: Scaffold(
+            body: Center(
+      child: Column(
+        children: [
+          WebF(
+            viewportWidth: viewportSize.width - queryData.padding.horizontal,
+            viewportHeight: viewportSize.height - queryData.padding.vertical,
+            bundle: WebFBundle.fromUrl('https://www.baidu.com'),
+          ),
+        ],
+      ),
+    )));
+  }
 }
