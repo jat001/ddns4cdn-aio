@@ -1,7 +1,9 @@
 # Flutter-related
 Flutter/ephemeral/
 Flutter/GeneratedPlugin*
+Flutter/
 **/Pods/
+Podfile
 
 # Xcode-related
 **/dgph
