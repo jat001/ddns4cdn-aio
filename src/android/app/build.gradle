@@ -22,6 +22,8 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
+project.buildDir = new File("${rootProject.buildDir}/${project.name}").getCanonicalFile()
+
 android {
     namespace "best.jat.ddns4cdn"
     compileSdkVersion flutter.compileSdkVersion
@@ -37,7 +39,9 @@ android {
     }
 
     sourceSets {
-        main.java.srcDirs += 'src/main/kotlin'
+        main {
+            java.srcDirs += 'src/main/kotlin'
+        }
     }
 
     defaultConfig {
@@ -63,12 +67,6 @@ flutter {
     source '../..'
 }
 
-repositories {
-    flatDir {
-        dirs '.'
-    }
-}
-
 dependencies {
-    implementation (name:'ddns4cdn', ext:'aar')
+    implementation fileTree(include: ['*.aar'], dir: 'libs')
 }

@@ -12,5 +12,4 @@ key.properties
 *.keystore
 *.jks
 
-*.jar
-*.aar
+libs

@@ -11,6 +11,7 @@ import androidx.annotation.NonNull
 import io.flutter.embedding.android.FlutterActivity
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.plugin.common.MethodChannel
+import worker.Worker
 
 class MainActivity : FlutterActivity() {
     private val CHANNEL = "ddns4cdn.jat.best/battery"
@@ -50,5 +51,10 @@ class MainActivity : FlutterActivity() {
         }
 
         return batteryLevel
+    }
+
+    private fun testWorker(): Void? {
+        Worker.worker("test".toByteArray(Charsets.UTF_8))
+        return null
     }
 }
