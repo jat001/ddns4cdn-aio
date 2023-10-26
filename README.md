@@ -4,6 +4,24 @@
 
 This project focuses on using VS Code as an IDE for development on all platforms. No Android Studio, Xcode, or other IDE required.
 
+### Flutter
+
+```shell
+# Windows
+scoop install extra/flutter
+# macOS
+brew install flutter
+# Arch Linux
+yay flutter
+```
+
+For Chinese users, you can set the following environment variables to speed up the download of Flutter SDK and Dart packages.
+
+```shell
+export FLUTTER_STORAGE_BASE_URL='https://storage.flutter-io.cn'
+export PUB_HOSTED_URL='https://pub.flutter-io.cn'
+```
+
 ```shell
 cd src
 flutter pub get
@@ -18,8 +36,14 @@ cd src/windows
 ### macOS
 
 ```shell
-brew install swiftlint
-brew install swiftformat
+# Please install linter and formatter if you want to contribute to this project.
+brew install swiftlint swiftformat
+brew install xcodegen cocoapods
+```
+
+```shell
+xcodegen generate
+pod install
 ```
 
 ```shell
@@ -34,11 +58,54 @@ cd src/linux
 
 ### Android
 
-```shell
-cd src/android
-gradle wrapper
-gradle build
-```
+1. Install your preferred Java SDK. This project uses the latest Oracle JDK. Do not forget to set the `JAVA_HOME` environment variable.
+
+   ```shell
+   # Windows
+   scoop install java/oraclejdk
+   # scoop will set JAVA_HOME automatically
+   $env:JAVA_HOME = $env:USERPROFILE + '\scoop\apps\oraclejdk\current'
+   # macOS
+   brew install oracle-jdk
+   export JAVA_HOME="$(/usr/libexec/java_home)"
+   # Arch Linux
+   yay jdk
+   export JAVA_HOME='/usr/lib/jvm/java-jdk21'
+   ```
+
+2. Install Android command line tools and set the `ANDROID_HOME` environment variable.
+
+   ```shell
+   # Windows
+   scoop install main/android-clt
+   # scoop will set ANDROID_HOME automatically
+   $env:ANDROID_HOME = $env:USERPROFILE + '\scoop\apps\android-clt\current'
+   # macOS
+   brew install android-commandlinetools
+   export ANDROID_HOME='/usr/local/share/android-commandlinetools'
+   # Arch Linux
+   yay android-sdk-cmdline-tools-latest
+   export ANDROID_HOME='/opt/android-sdk'
+   ```
+
+3. Install Gradle.
+
+   ```shell
+   # Windows
+   scoop install main/gradle
+   # macOS
+   brew install --ignore-dependencies gradle
+   # Arch Linux
+   sudo pacman -S gradle
+   ```
+
+4. Build
+
+   ```shell
+   cd src/android
+   gradle wrapper
+   gradle build
+   ```
 
 ### iOS
 

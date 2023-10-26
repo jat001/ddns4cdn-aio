@@ -3,7 +3,7 @@ Flutter/ephemeral/
 Flutter/GeneratedPlugin*
 Flutter/
 **/Pods/
-Podfile*
+Podfile.lock
 
 # Xcode-related
 **/dgph

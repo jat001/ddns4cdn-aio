@@ -1,0 +1,10 @@
+name: Runner
+configFiles:
+  Debug: Configs/Debug.xcconfig
+  Release: Configs/Release.xcconfig
+targets:
+  Runner:
+    sources:
+      - Runner
+    type: application
+    platform: macOS
