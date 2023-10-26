@@ -30,6 +30,8 @@ Runner/GeneratedPluginRegistrant.*
 Flutter/
 Podfile
 
+*.xcframework
+
 # Exceptions to above rules.
 !default.mode1v3
 !default.mode2v3

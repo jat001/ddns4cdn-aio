@@ -2,8 +2,6 @@
   "configurations": [
     {
       "compilerPath": "C:/Program Files (x86)/Microsoft Visual Studio/2022/BuildTools/VC/Tools/MSVC/14.37.32822/bin/Hostx64/x64/cl.exe",
-      "cppStandard": "c++20",
-      "cStandard": "c17",
       "defines": ["_DEBUG", "UNICODE", "_UNICODE"],
       "includePath": ["${workspaceFolder}/**"],
       "intelliSenseMode": "windows-msvc-x64",
@@ -12,8 +10,6 @@
     },
     {
       "compilerPath": "/usr/bin/clang",
-      "cppStandard": "c++20",
-      "cStandard": "c17",
       "defines": [],
       "includePath": ["${workspaceFolder}/**"],
       "intelliSenseMode": "macos-clang-x64",

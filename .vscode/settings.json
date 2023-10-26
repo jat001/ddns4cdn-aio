@@ -2,5 +2,8 @@
   "cmake.sourceDirectory": [
     "${workspaceFolder}/src/windows",
     "${workspaceFolder}/src/linux"
-  ]
+  ],
+  "files.associations": {
+    "**/ios/**/*.h": "objective-c"
+  }
 }
