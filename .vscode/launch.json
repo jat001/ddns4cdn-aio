@@ -4,7 +4,25 @@
       "args": ["-d", "windows"],
       "cwd": "${workspaceFolder}/src",
       "flutterMode": "debug",
-      "name": "win",
+      "name": "windows",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "args": ["-d", "macos"],
+      "cwd": "${workspaceFolder}/src",
+      "flutterMode": "debug",
+      "name": "macos",
+      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "args": ["-d", "linux"],
+      "cwd": "${workspaceFolder}/src",
+      "flutterMode": "debug",
+      "name": "linux",
       "program": "lib/main.dart",
       "request": "launch",
       "type": "dart"

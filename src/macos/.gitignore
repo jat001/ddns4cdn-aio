@@ -3,8 +3,10 @@ Flutter/ephemeral/
 Flutter/GeneratedPlugin*
 Flutter/
 **/Pods/
-Podfile
+Podfile*
 
 # Xcode-related
 **/dgph
 **/xcuserdata/
+*.xcodeproj
+*.xcworkspace
