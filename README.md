@@ -2,6 +2,8 @@
 
 ## Development
 
+This project focuses on using VS Code as an IDE for development on all platforms. No Android Studio, Xcode, or other IDE required.
+
 ```shell
 cd src
 flutter pub get
@@ -14,6 +16,11 @@ cd src/windows
 ```
 
 ### macOS
+
+```shell
+brew install swiftlint
+brew install swiftformat
+```
 
 ```shell
 cd src/macos
