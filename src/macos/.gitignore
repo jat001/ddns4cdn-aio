@@ -1,7 +1,6 @@
 # Flutter-related
 Flutter/ephemeral/
 Flutter/GeneratedPlugin*
-Flutter/
 **/Pods/
 Podfile.lock
 
