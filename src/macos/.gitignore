@@ -7,5 +7,3 @@ Podfile.lock
 # Xcode-related
 **/dgph
 **/xcuserdata/
-*.xcodeproj
-*.xcworkspace

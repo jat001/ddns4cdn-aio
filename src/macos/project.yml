@@ -1,7 +1,7 @@
 name: Runner
 configFiles:
-  Debug: Configs/Debug.xcconfig
-  Release: Configs/Release.xcconfig
+  Debug: Runner/Configs/Debug.xcconfig
+  Release: Runner/Configs/Release.xcconfig
 targets:
   Runner:
     sources:
