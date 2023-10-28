@@ -8,6 +8,8 @@ targets:
       - target: Flutter
 
     preBuildScripts:
+      # DO NOT CHANGE THE NAME.
+      # This build phase overrides the flutter plugin's build phase.
       - name: "[CP] Check Pods Manifest.lock"
         inputFiles:
           - "${PODS_PODFILE_DIR_PATH}/Podfile.lock"
@@ -39,13 +41,15 @@ targets:
         buildPhase: resources
 
     postBuildScripts:
-      - name: ShellScript
+      - name: Flutter Embed
         basedOnDependencyAnalysis: false
         path: "/bin/sh"
         script: |
           echo "$PRODUCT_NAME.app" > "$PROJECT_DIR"/Flutter/ephemeral/.app_filename \
             && "$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh embed
 
+      # DO NOT CHANGE THE NAME.
+      # This build phase overrides the flutter plugin's build phase.
       - name: "[CP] Embed Pods Frameworks"
         inputFileLists:
           - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist"
@@ -75,7 +79,7 @@ targets:
 aggregateTargets:
   Flutter:
     buildScripts:
-      - name: ShellScript
+      - name: Flutter Assemble
         inputFileLists:
           - Flutter/ephemeral/FlutterInputs.xcfilelist
         inputFiles:
