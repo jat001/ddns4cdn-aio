@@ -1,89 +1,88 @@
 name: Runner
 
+targets:
+  Runner:
+    type: application
+    platform: macOS
+    dependencies:
+      - target: Flutter
+
+    preBuildScripts:
+      - name: "[CP] Check Pods Manifest.lock"
+        inputFiles:
+          - "${PODS_PODFILE_DIR_PATH}/Podfile.lock"
+          - "${PODS_ROOT}/Manifest.lock"
+        outputFiles:
+          - "$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt"
+        path: "/bin/sh"
+        script: |
+          diff "${PODS_PODFILE_DIR_PATH}/Podfile.lock" "${PODS_ROOT}/Manifest.lock" > /dev/null
+          if [ $? != 0 ] ; then
+            # print error to STDERR
+            echo "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation." >&2
+            exit 1
+          fi
+          # This output is used by Xcode 'outputs' to avoid re-running this script phase.
+          echo "SUCCESS" > "${SCRIPT_OUTPUT_FILE_0}"
+
+    sources:
+      - path: Runner/MainFlutterWindow.swift
+        buildPhase: sources
+      - path: Runner/AppDelegate.swift
+        buildPhase: sources
+      - path: Flutter/GeneratedPluginRegistrant.swift
+        buildPhase: sources
+
+      - path: Runner/Assets.xcassets
+        buildPhase: resources
+      - path: Runner/MainMenu.xib
+        buildPhase: resources
+
+    postBuildScripts:
+      - name: ShellScript
+        basedOnDependencyAnalysis: false
+        path: "/bin/sh"
+        script: |
+          echo "$PRODUCT_NAME.app" > "$PROJECT_DIR"/Flutter/ephemeral/.app_filename \
+            && "$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh embed
+
+      - name: "[CP] Embed Pods Frameworks"
+        inputFileLists:
+          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist"
+        outputFileLists:
+          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist"
+        path: "/bin/sh"
+        script: |
+          "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh"
+
+    settings:
+      base:
+        PRODUCT_NAME: Ddns4cdn
+        PRODUCT_BUNDLE_IDENTIFIER: best.jat.ddns4cdn
+        PRODUCT_COPYRIGHT: Copyright © 2023 Jat. All rights reserved.
+
+        CODE_SIGNING_ALLOWED: NO
+        INFOPLIST_FILE: Runner/Info.plist
+      configs:
+        Debug:
+          CODE_SIGN_ENTITLEMENTS: Runner/Entitlements/Debug.entitlements
+        Release:
+          CODE_SIGN_ENTITLEMENTS: Runner/Entitlements/Release.entitlements
+    configFiles:
+      Debug: Runner/Configs/Debug.xcconfig
+      Release: Runner/Configs/Release.xcconfig
+
 aggregateTargets:
-  FLX:
+  Flutter:
     buildScripts:
-      - inputFileLists:
+      - name: ShellScript
+        inputFileLists:
           - Flutter/ephemeral/FlutterInputs.xcfilelist
         inputFiles:
           - Flutter/ephemeral/tripwire
         outputFileLists:
           - Flutter/ephemeral/FlutterOutputs.xcfilelist
-        name: ShellScript
-        path: /bin/sh
-        script: '"$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh && touch Flutter/ephemeral/tripwire'
-    name: Flutter Assemble
-    productName: FLX
-
-targets:
-  Pods:
-    sources:
-      - path: Pods
-        includes:
-          - "*.xcconfig"
-    type: framework
-    platform: macOS
-    settings:
-      configFiles:
-        Debug: Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig
-        Release: Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig
-
-  Flutter:
-    platform: macOS
-    type: framework
-    sources:
-      - path: Flutter
-        includes:
-          - GeneratedPluginRegistrant.swift
-          - Flutter-Debug.xcconfig
-          - Flutter-Release.xcconfig
-
-  Runner:
-    sources:
-      - path: Runner
-        includes:
-          - Assets.xcassets
-          - "*.swift"
-
-    type: application
-    platform: macOS
-    configFiles:
-      Debug: Runner/Configs/Debug.xcconfig
-      Release: Runner/Configs/Release.xcconfig
-    settings:
-      base:
-        PRODUCT_NAME: "$(TARGET_NAME)"
-        CODE_SIGN_STYLE: Automatic
-        CODE_SIGN_IDENTITY: "-"
-      configs:
-        debug:
-          CODE_SIGN_ENTITLEMENTS: Runner/Entitlements/Debug.entitlements
-        release:
-          CODE_SIGN_ENTITLEMENTS: Runner/Entitlements/Release.entitlements
-    preBuildScripts:
-      - inputFiles:
-          - ${PODS_PODFILE_DIR_PATH}/Podfile.lock
-          - ${PODS_ROOT}/Manifest.lock
-        name: "[CP] Check Pods Manifest.lock"
-        outputFiles:
-          - $(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt
-        path: /bin/sh
-        script: "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n"
-    postBuildScripts:
-      - basedOnDependencyAnalysis: false
-        name: ShellScript
-        path: /bin/sh
-        script: "echo \"$PRODUCT_NAME.app\" > \"$PROJECT_DIR\"/Flutter/ephemeral/.app_filename && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/macos_assemble.sh embed\n"
-      - inputFileLists:
-          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist"
-        name: "[CP] Embed Pods Frameworks"
-        outputFiles:
-          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist"
-        runOnlyWhenInstalling: true
-        path: /bin/sh
-        script: "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n"
-    dependencies:
-      - target: Pods
-      - target: Flutter
-    name: Build configuration list for PBXNativeTarget "Runner"
-    productName: Runner
+        path: "/bin/sh"
+        script: |
+          "$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh build \
+            && touch Flutter/ephemeral/tripwire
