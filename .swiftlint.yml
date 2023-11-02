@@ -1,3 +1,8 @@
+included:
+  - src/ios
+  - src/macos
 excluded:
   - "**/ephemeral"
   - "**/Generated*"
+disabled_rules:
+  - trailing_comma
