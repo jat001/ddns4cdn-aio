@@ -17,8 +17,8 @@ targets:
       - path: Runner/GeneratedPluginRegistrant.m
         buildPhase: sources
 
-      # - path: Flutter/AppFrameworkInfo.plist
-      #   buildPhase: resources
+      - path: Flutter/AppFrameworkInfo.plist
+        buildPhase: resources
       - path: Runner/Assets.xcassets
         buildPhase: resources
       - path: Runner/Base.lproj/LaunchScreen.storyboard
@@ -39,18 +39,10 @@ targets:
         PRODUCT_NAME: Ddns4cdn
         PRODUCT_BUNDLE_IDENTIFIER: best.jat.ddns4cdn
         PRODUCT_COPYRIGHT: Copyright © 2023 Jat. All rights reserved.
+        DEVELOPMENT_TEAM: H2SHN33HHY
 
-        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
-        CLANG_ENABLE_MODULES: "YES"
-        CURRENT_PROJECT_VERSION: "$(FLUTTER_BUILD_NUMBER)"
-        ENABLE_BITCODE: "NO"
         INFOPLIST_FILE: Runner/Info.plist
-        LD_RUNPATH_SEARCH_PATHS:
-          - "$(inherited)"
-          - "@executable_path/Frameworks"
         SWIFT_OBJC_BRIDGING_HEADER: Runner/Runner-Bridging-Header.h
-        SWIFT_VERSION: "5.0"
-        VERSIONING_SYSTEM: apple-generic
       configs:
         Debug:
         Release:
