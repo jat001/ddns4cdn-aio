@@ -7,26 +7,6 @@ targets:
     dependencies:
       - target: Flutter
 
-    preBuildScripts:
-      # DO NOT CHANGE THE NAME.
-      # This build phase overrides the flutter plugin's build phase.
-      - name: "[CP] Check Pods Manifest.lock"
-        inputFiles:
-          - "${PODS_PODFILE_DIR_PATH}/Podfile.lock"
-          - "${PODS_ROOT}/Manifest.lock"
-        outputFiles:
-          - "$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt"
-        path: "/bin/sh"
-        script: |
-          diff "${PODS_PODFILE_DIR_PATH}/Podfile.lock" "${PODS_ROOT}/Manifest.lock" > /dev/null
-          if [ $? != 0 ] ; then
-            # print error to STDERR
-            echo "error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation." >&2
-            exit 1
-          fi
-          # This output is used by Xcode 'outputs' to avoid re-running this script phase.
-          echo "SUCCESS" > "${SCRIPT_OUTPUT_FILE_0}"
-
     sources:
       - path: Runner/MainFlutterWindow.swift
         buildPhase: sources
@@ -47,17 +27,6 @@ targets:
         script: |
           echo "$PRODUCT_NAME.app" > "$PROJECT_DIR"/Flutter/ephemeral/.app_filename \
             && "$FLUTTER_ROOT"/packages/flutter_tools/bin/macos_assemble.sh embed
-
-      # DO NOT CHANGE THE NAME.
-      # This build phase overrides the flutter plugin's build phase.
-      - name: "[CP] Embed Pods Frameworks"
-        inputFileLists:
-          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist"
-        outputFileLists:
-          - "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist"
-        path: "/bin/sh"
-        script: |
-          "${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh"
 
     settings:
       base:

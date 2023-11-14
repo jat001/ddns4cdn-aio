@@ -47,13 +47,6 @@ brew install swiftlint swiftformat
 cd src/macos
 # Generate Runner.xcodeproj, check project.yml for details.
 xcodegen generate
-# Optional: flutter will run this command automatically
-# when you run `flutter run` or `flutter build`.
-pod install
-# `pod install` will generate Runner.xcworkspace automatically.
-# But if you did not run `pod install`, you must create it manually
-# because flutter will check its existence before running `pod install`.
-mkdir Runner.xcworkspace
 ```
 
 ### Linux
@@ -116,5 +109,15 @@ cd src/linux
 ### iOS
 
 ```shell
+# Install necessary tools.
+brew install xcodegen cocoapods
+# Optional: install linter and formatter
+# if you want to contribute to this project.
+brew install swiftlint swiftformat
+```
+
+```shell
 cd src/ios
+# Generate Runner.xcodeproj, check project.yml for details.
+xcodegen generate
 ```
