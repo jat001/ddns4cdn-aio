@@ -37,7 +37,7 @@ targets:
 
       - path: Runner/Assets.xcassets
         buildPhase: resources
-      - path: Runner/MainMenu.xib
+      - path: Runner/Base.lproj/MainMenu.xib
         buildPhase: resources
 
     postBuildScripts:

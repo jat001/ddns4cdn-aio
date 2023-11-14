@@ -28,9 +28,11 @@ ServiceDefinitions.json
 Runner/GeneratedPluginRegistrant.*
 
 Flutter/
-Podfile
 
 *.xcframework
+*.xcodeproj
+*.xcworkspace
+Podfile.lock
 
 # Exceptions to above rules.
 !default.mode1v3
