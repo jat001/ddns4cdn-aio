@@ -5,8 +5,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:8.3.0-alpha12'
-        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.20'
+        classpath 'com.android.tools.build:gradle:8.3.0-alpha14'
+        classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.21'
     }
 }
 
@@ -21,7 +21,7 @@ allprojects {
     }
 }
 
-rootProject.buildDir = new File("${rootProject.projectDir}/../build/android").getCanonicalFile()
+rootProject.buildDir = new File("${rootProject.projectDir}/../build").getCanonicalFile()
 
 subprojects {
     project.evaluationDependsOn(':app')

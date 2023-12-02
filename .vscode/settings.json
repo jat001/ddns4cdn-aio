@@ -6,5 +6,6 @@
   "files.associations": {
     "**/ios/**/*.h": "objective-c"
   },
+  "java.compile.nullAnalysis.mode": "automatic",
   "terminal.integrated.cwd": "${workspaceFolder}/src"
 }

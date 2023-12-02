@@ -1,29 +1,34 @@
 {
   "configurations": [
     {
-      "args": ["-d", "windows"],
       "cwd": "${workspaceFolder}/src",
+      "deviceId": "windows",
       "flutterMode": "debug",
       "name": "windows",
-      "program": "lib/main.dart",
       "request": "launch",
       "type": "dart"
     },
     {
-      "args": ["-d", "macos"],
       "cwd": "${workspaceFolder}/src",
+      "deviceId": "macos",
       "flutterMode": "debug",
       "name": "macos",
-      "program": "lib/main.dart",
       "request": "launch",
       "type": "dart"
     },
     {
-      "args": ["-d", "linux"],
       "cwd": "${workspaceFolder}/src",
+      "deviceId": "linux",
       "flutterMode": "debug",
       "name": "linux",
-      "program": "lib/main.dart",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "cwd": "${workspaceFolder}/src",
+      "deviceId": "127.0.0.1:58526",
+      "flutterMode": "debug",
+      "name": "android",
       "request": "launch",
       "type": "dart"
     }
